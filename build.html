@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration</title>
+    <style>
+        /* Container to hold left box and right image */
+        .container {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+        }
+
+        /* Style for the left box */
+        .left-box {
+            width: 20%;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        /* Style for dropdown container */
+        .dropdown {
+            margin-bottom: 20px;
+        }
+
+        /* Style for dropdown label */
+        .dropdown label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        /* Style for dropdown select */
+        .dropdown select {
+            width: 100%;
+            padding: 10px;
+            border: none; /* Remove border */
+            border-radius: 5px;
+            background-color: #fff; /* Background color */
+            font-size: 16px;
+            appearance: none; /* Hides default dropdown arrow */
+            -webkit-appearance: none; /* for Safari */
+            -moz-appearance: none; /* for Firefox */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="yellow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M32 48L8 24h48z"/></svg>'); /* Custom arrow icon */
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+
+        /* Style for the right image */
+        .right-space {
+            width: 80%;
+            
+        }
+
+        /* Style for the image inside right space */
+        .right-space img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Style for the box */
+        .box {
+            width: 100%;
+            height: 50px;
+            background-color: #ccc;
+            border: 1px solid #999;
+            border-radius: 5px;
+        }
+        body{
+            font-family: arial;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-box">
+            <!-- Dropdown for Variant -->
+            <div class="dropdown">
+                <label for="variant"></label>
+                <select name="variant" value="VARIANT" id="variant">
+                    <!-- Remove options and add box -->
+                </select>
+            </div>
+
+            <!-- Dropdown for Accessorize -->
+            <div class="dropdown">
+                <label for="accessorize"></label>
+                <select name="accessorize" id="accessorize">
+                    <option value="accessorize1">Accessorize 1</option>
+                    <option value="accessorize2">Accessorize 2</option>
+                    <option value="accessorize3">Accessorize 3</option>
+                </select>
+            </div>
+
+            <!-- Dropdown for Add-ons -->
+            <div class="dropdown">
+                <label for="addons"></label>
+                <select name="addons" id="addons">
+                    <option value="addons1">Add-ons 1</option>
+                    <option value="addons2">Add-ons 2</option>
+                    <option value="addons3">Add-ons 3</option>
+                </select>
+            </div>
+        </div>
+        <div class="right-space">
+            <!-- Image on the right side -->
+            <img src="Jeep.png" alt="Jeep Image">
+        </div>
+    </div>
+</body>
+</html>

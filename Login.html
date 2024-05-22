@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Form Validation</title>
+        <style>
+            .fieldset-auto-width{
+                width:0px;
+                background-color: gray;
+                margin-left:2px;
+                padding-right:1.75cm;
+                padding-left:0.001cm;
+                padding-top:0.5cm;
+            }
+            .button{
+                background-color: yellow;
+            }
+        </style>
+        <script>
+            function validate(){
+                var n=f.uid.value;
+                var p=f.passwd.value;
+                var v=new RegExp("^[a-zA-Z][a-zA-Z]+$");
+                if(!n.match(v))
+                {
+                    alert("Name should be characters only");
+                }
+                if(n.length<6)
+                    alert("Name should be of atleast 6 characters");
+                if(p.length<6)
+                    alert("Password should be atleast of 6 characters");
+            }
+        </script>
+    </head>
+    <body>
+        <form name="f">
+            <fieldset class="fieldset-auto-width">
+                <center><legend><u>USER LOGIN PAGE</u></legend></center>
+            <pre>
+            User ID :<input type="text" name="uid"/><br>
+            Password:<input type="text" name="passwd"/><br>
+            <input type="submit" class="button" value="Submit" onClick="validate()"/> <input type="reset" class="button">
+            </pre>
+        </fieldset>
+        </form>
+    </body>
+    </html>
+    
+
