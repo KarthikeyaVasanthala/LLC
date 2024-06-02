@@ -1,0 +1,33 @@
+name: Upload to Azure Blob Storage
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Azure CLI
+      uses: azure/setup-azure@v1
+      with:
+        version: latest
+
+    - name: Login to Azure CLI
+      run: |
+        echo "${{ secrets.AZURE_STORAGE_ACCOUNT }}" > mmllc_1717355967059
+        echo "${{ secrets.AZURE_STORAGE_KEY }}" > hGivEGqMQIy0tCvt+eySDBN8cpGuMJgIq43gbYuvpK52uNCffZQCQdomy+P5KXL1OJo+70rqMfp4+AStmjxSUQ==
+        az storage account keys list --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }}
+        az storage container create --name my-container --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} --account-key ${{ secrets.AZURE_STORAGE_KEY }}
+      
+    - name: Upload files to Azure Blob Storage
+      run: |
+        az storage blob upload-batch -d my-container -s . --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} --account-key ${{ secrets.AZURE_STORAGE_KEY }}
