@@ -23,11 +23,13 @@ jobs:
 
     - name: Login to Azure CLI
       run: |
-        echo "${{ secrets.AZURE_STORAGE_ACCOUNT }}" > mmllc_1717355967059
-        echo "${{ secrets.AZURE_STORAGE_KEY }}" > hGivEGqMQIy0tCvt+eySDBN8cpGuMJgIq43gbYuvpK52uNCffZQCQdomy+P5KXL1OJo+70rqMfp4+AStmjxSUQ==
-        az storage account keys list --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }}
+        az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
+        az account set --subscription 515a9d7a-19a3-4119-b986-032327331c93
+
+    - name: Create container if it doesn't exist
+      run: |
         az storage container create --name my-container --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} --account-key ${{ secrets.AZURE_STORAGE_KEY }}
-      
+
     - name: Upload files to Azure Blob Storage
       run: |
         az storage blob upload-batch -d my-container -s . --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} --account-key ${{ secrets.AZURE_STORAGE_KEY }}
